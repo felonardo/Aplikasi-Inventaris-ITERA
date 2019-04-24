@@ -10,20 +10,49 @@ import java.util.Base64;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import sun.security.jca.GetInstance;
 
 /**
  *
  * @author USER
  */
 public class UI_Main extends javax.swing.JFrame {
-
+    
         int count=1;
-    /**
-     * Creates new form UI_Bg
-     */
+//        Fr_Beranda fr_Beranda;
+        
+    private static Fr_Beranda single_instance_Beranda =null;
+    private static Fr_Inventaris single_instance_Inventaris =null; 
+//    private static Fr_Beranda single_instance =null;     
+//    private static Fr_Beranda single_instance =null; 
+    
     public UI_Main() {
         initComponents();
+        jDesktopPane1.add(UI_Main.getInstanceBeranda());
+        jDesktopPane1.add(UI_Main.getInstanceInventaris());
     }
+    
+    
+    //static digunakan untuk akses Fr_Beranda tanpa harus membuat objeknya terlebih dahulu
+    
+    //Buat 1 Objek Beranda 
+      public static Fr_Beranda getInstanceBeranda(){
+        if(single_instance_Beranda == null){
+            single_instance_Beranda = new Fr_Beranda();
+        }
+        return single_instance_Beranda;
+      } 
+    //Buat 1 objek Inventaris
+      public static Fr_Inventaris getInstanceInventaris(){
+        if(single_instance_Inventaris == null){
+            single_instance_Inventaris = new Fr_Inventaris();
+        }  
+          return single_instance_Inventaris;
+      }
+    //Buat 1 objek Pinjam
+      
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -186,7 +215,9 @@ public class UI_Main extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1271, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,17 +245,29 @@ public class UI_Main extends javax.swing.JFrame {
 
     private void pnlBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseClicked
         // TODO add your handling code here:
-           Fr_Beranda fr_beranda = new Fr_Beranda();
-           BasicInternalFrameUI bi = (BasicInternalFrameUI)fr_beranda.getUI();
-           bi.setNorthPane(null);
-           jDesktopPane1.add(fr_beranda);
-           fr_beranda.setVisible(true);
-           
+//           Fr_Beranda fr_beranda = new Fr_Beranda();
+//           BasicInternalFrameUI bi = (BasicInternalFrameUI)fr_beranda.getUI();
+//           //bi.setNorthPane(null);
         
-        if(count!=1){
-            fr_beranda.close();
-        }
-        count++;
+//            fr_Beranda = new Fr_Beranda();
+//            jDesktopPane1.add(fr_Beranda);
+//            fr_Beranda.setVisible(true);
+        
+              Fr_Beranda Beranda = UI_Main.getInstanceBeranda();
+              BasicInternalFrameUI bi = (BasicInternalFrameUI)Beranda.getUI();
+              bi.setNorthPane(null);
+              Beranda.setVisible(true);
+              Beranda.toFront();
+              
+              
+//           
+//        
+//        if(count!=1){
+//            fr_beranda.close();
+//        }
+//        count++;
+//        
+        
         
         
         
@@ -242,10 +285,25 @@ public class UI_Main extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlBerandaMouseExited
 
     private void pnlInventarisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInventarisMouseClicked
-        // TODO add your handling code here:
-        //new UI_Inventaris().setVisible(true);
-
-        //close();
+//        // TODO add your handling code here:
+//         Fr_Inventaris fr_inventaris = new Fr_Inventaris();
+//           BasicInternalFrameUI bi = (BasicInternalFrameUI)fr_inventaris.getUI();
+//           bi.setNorthPane(null);
+//           jDesktopPane1.add(fr_inventaris);
+//           fr_inventaris.setVisible(true);
+//           
+//        
+//        if(count!=1){
+//            fr_inventaris.close();
+//        }
+//        count++;
+        
+              Fr_Inventaris Inventaris = UI_Main.getInstanceInventaris();
+              BasicInternalFrameUI bi = (BasicInternalFrameUI)Inventaris.getUI();
+              bi.setNorthPane(null);
+              Inventaris.setVisible(true);
+              
+              Inventaris.toFront();
     }//GEN-LAST:event_pnlInventarisMouseClicked
 
     private void pnlInventarisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInventarisMouseEntered
@@ -357,8 +415,8 @@ public class UI_Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UI_Main().setVisible(true);
-                new Fr_Beranda().setVisible(true);
+                new UI_Login().setVisible(true);
+                       
             }
         });
     }

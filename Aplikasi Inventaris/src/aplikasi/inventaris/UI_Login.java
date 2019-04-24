@@ -19,7 +19,7 @@ public class UI_Login extends javax.swing.JFrame {
      * Creates new form UI_Login
      */
     public UI_Login() {
-        //makecenter();
+        makecenter();
         initComponents();
     }
 
@@ -75,6 +75,11 @@ public class UI_Login extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnLoginMouseExited(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -150,12 +155,16 @@ public class UI_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UI_Beranda().setVisible(true);
+                new UI_Main().setVisible(true);
                 close();
             }
         });
         
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +189,7 @@ public class UI_Login extends javax.swing.JFrame {
         if(Framesize.width > screensize.width){
             Framesize.width=screensize.width;
         }
-        this.setLocation((screensize.width-Framesize.width)/2,(screensize.height-Framesize.height)/2);
+        this.setLocation((screensize.width-Framesize.width)/4,(screensize.height-Framesize.height)/4);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
