@@ -155,9 +155,18 @@ public class UI_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+            Koneksi db=new Koneksi();
+            if(db.getCon()!=null){
                 new UI_Main().setVisible(true);
                 close();
+            };
+           
             }
+            
+            
+            
+            
         });
         
     }//GEN-LAST:event_btnLoginMouseClicked

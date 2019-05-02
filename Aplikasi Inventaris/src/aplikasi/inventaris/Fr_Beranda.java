@@ -5,6 +5,8 @@
  */
 package aplikasi.inventaris;
 
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author USER

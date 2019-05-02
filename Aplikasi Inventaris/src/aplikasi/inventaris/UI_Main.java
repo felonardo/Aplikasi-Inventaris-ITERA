@@ -286,18 +286,9 @@ public class UI_Main extends javax.swing.JFrame {
 
     private void pnlInventarisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInventarisMouseClicked
 //        // TODO add your handling code here:
-//         Fr_Inventaris fr_inventaris = new Fr_Inventaris();
-//           BasicInternalFrameUI bi = (BasicInternalFrameUI)fr_inventaris.getUI();
-//           bi.setNorthPane(null);
-//           jDesktopPane1.add(fr_inventaris);
-//           fr_inventaris.setVisible(true);
-//           
-//        
-//        if(count!=1){
-//            fr_inventaris.close();
-//        }
-//        count++;
-        
+
+              pnlInventaris.setBackground(Color.GRAY);
+              pnlBeranda.setBackground(Color.BLACK);
               Fr_Inventaris Inventaris = UI_Main.getInstanceInventaris();
               BasicInternalFrameUI bi = (BasicInternalFrameUI)Inventaris.getUI();
               bi.setNorthPane(null);
@@ -308,13 +299,12 @@ public class UI_Main extends javax.swing.JFrame {
 
     private void pnlInventarisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInventarisMouseEntered
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
+        //pnlBeranda.setBackground(Color.GRAY);
         pnlInventaris.setBackground(Color.darkGray);
     }//GEN-LAST:event_pnlInventarisMouseEntered
 
     private void pnlInventarisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInventarisMouseExited
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
         pnlInventaris.setBackground(Color.black);
     }//GEN-LAST:event_pnlInventarisMouseExited
 
@@ -326,13 +316,13 @@ public class UI_Main extends javax.swing.JFrame {
 
     private void pnlPinjamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPinjamMouseEntered
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
+        //pnlBeranda.setBackground(Color.GRAY);
         pnlPinjam.setBackground(Color.darkGray);
     }//GEN-LAST:event_pnlPinjamMouseEntered
 
     private void pnlPinjamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPinjamMouseExited
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
+        //pnlBeranda.setBackground(Color.GRAY);
         pnlPinjam.setBackground(Color.black);
     }//GEN-LAST:event_pnlPinjamMouseExited
 
@@ -344,13 +334,13 @@ public class UI_Main extends javax.swing.JFrame {
 
     private void PnlPegawaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PnlPegawaiMouseEntered
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
+        //pnlBeranda.setBackground(Color.GRAY);
         PnlPegawai.setBackground(Color.darkGray);
     }//GEN-LAST:event_PnlPegawaiMouseEntered
 
     private void PnlPegawaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PnlPegawaiMouseExited
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
+        //pnlBeranda.setBackground(Color.GRAY);
         PnlPegawai.setBackground(Color.BLACK);
     }//GEN-LAST:event_PnlPegawaiMouseExited
 
@@ -365,13 +355,13 @@ public class UI_Main extends javax.swing.JFrame {
 
     private void PnlKeluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PnlKeluarMouseEntered
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
+        //pnlBeranda.setBackground(Color.GRAY);
         PnlKeluar.setBackground(Color.darkGray);
     }//GEN-LAST:event_PnlKeluarMouseEntered
 
     private void PnlKeluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PnlKeluarMouseExited
         // TODO add your handling code here:
-        pnlBeranda.setBackground(Color.GRAY);
+        //pnlBeranda.setBackground(Color.GRAY);
         PnlKeluar.setBackground(Color.black);
     }//GEN-LAST:event_PnlKeluarMouseExited
      public void close(){
@@ -413,9 +403,11 @@ public class UI_Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UI_Login().setVisible(true);
+                UI_Login login = new UI_Login();
+                login.setVisible(true);
                        
             }
         });

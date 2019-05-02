@@ -4,19 +4,23 @@
  * and open the template in the editor.
  */
 package aplikasi.inventaris;
+import java.sql.Connection;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author USER
  */
 public class Fr_Inventaris extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Fr_Beranda
-     */
+    int row;
     public Fr_Inventaris() {
         initComponents();
         this.setLocation(350, 0);
+        showTables();
+        
         
         
     }
@@ -43,7 +47,7 @@ public class Fr_Inventaris extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         BtnTambah = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TbBarang = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -83,14 +87,19 @@ public class Fr_Inventaris extends javax.swing.JInternalFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         BtnTambah.setText("Tambah");
+        BtnTambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnTambahMouseClicked(evt);
+            }
+        });
         BtnTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnTambahActionPerformed(evt);
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TbBarang.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        TbBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -117,23 +126,23 @@ public class Fr_Inventaris extends javax.swing.JInternalFrame {
                 "	Jenis", "Nama Barang", "Jumlah", "Lokasi", "Keterangan", "Kondisi", "Vendor"
             }
         ));
-        jTable1.setRowHeight(25);
-        jTable1.getTableHeader().setResizingAllowed(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        TbBarang.setRowHeight(25);
+        TbBarang.getTableHeader().setResizingAllowed(false);
+        TbBarang.getTableHeader().setReorderingAllowed(false);
+        TbBarang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTable1MouseReleased(evt);
+                TbBarangMouseReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
+        jScrollPane1.setViewportView(TbBarang);
+        if (TbBarang.getColumnModel().getColumnCount() > 0) {
+            TbBarang.getColumnModel().getColumn(0).setResizable(false);
+            TbBarang.getColumnModel().getColumn(1).setResizable(false);
+            TbBarang.getColumnModel().getColumn(2).setResizable(false);
+            TbBarang.getColumnModel().getColumn(3).setResizable(false);
+            TbBarang.getColumnModel().getColumn(4).setResizable(false);
+            TbBarang.getColumnModel().getColumn(5).setResizable(false);
+            TbBarang.getColumnModel().getColumn(6).setResizable(false);
         }
 
         jButton1.setText("Next");
@@ -166,7 +175,7 @@ public class Fr_Inventaris extends javax.swing.JInternalFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,17 +212,25 @@ public class Fr_Inventaris extends javax.swing.JInternalFrame {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         // TODO add your handling code here:
+        
+//              BasicInternalFrameUI bi = (BasicInternalFrameUI)Inventaris.getUI();
+//              bi.setNorthPane(null);
+        Popup_TambahInventaris PTI =new Popup_TambahInventaris();
+        
+        PTI.setVisible(true);
+          
     }//GEN-LAST:event_BtnTambahActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
+    private void TbBarangMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TbBarangMouseReleased
         // TODO add your handling code here:
         if (evt.isPopupTrigger()){
             JTable source = (JTable)evt.getSource();
-            int row = source.rowAtPoint(evt.getPoint());
+            row = source.rowAtPoint(evt.getPoint());
             int col = source.columnAtPoint(evt.getPoint());
             
             if(!source.isRowSelected(row)){
@@ -221,16 +238,16 @@ public class Fr_Inventaris extends javax.swing.JInternalFrame {
             }
             jPopupMenu1.show(evt.getComponent(),evt.getX(),evt.getY());
         }
-    }//GEN-LAST:event_jTable1MouseReleased
+    }//GEN-LAST:event_TbBarangMouseReleased
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-                java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+//                java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
             
             new Popup_Edit().setVisible(true);
-            }           
-        });
+//            }           
+//        });
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
@@ -244,21 +261,49 @@ public class Fr_Inventaris extends javax.swing.JInternalFrame {
 //              java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
 //            
-//            new Popup_Edit().setVisible(true);
+//           new Popup_Edit().setVisible(true);
 //            }           
 //        });
     }//GEN-LAST:event_jPopupMenu1MouseClicked
 
+    private void BtnTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnTambahMouseClicked
+        // TODO add your handling code here:
+         //new Popup_TambahInventaris().setVisible(true);
+    }//GEN-LAST:event_BtnTambahMouseClicked
+
+    public void showTables(){
+    
+         try{
+             
+         Object [] rows={"Jenis","Nama Barang","Jumlah","Lokasi","Keterangan","Kondisi","Vendor"};
+            DefaultTableModel dtm=new DefaultTableModel(null,rows);
+            TbBarang.setModel(dtm);
+            TbBarang.setBorder(null);
+            jScrollPane1.setVisible(true);
+            jScrollPane1.setViewportView(TbBarang);
+//            String sql="select * from barang";
+            
+            Koneksi koneksi=new Koneksi();
+            Connection Koneksi1=koneksi.getCon();
+            new Koneksi().showData(Koneksi1, dtm);
+            koneksi.close(Koneksi1);
+    
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnTambah;
+    private javax.swing.JTable TbBarang;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
